@@ -20,3 +20,9 @@ Modelo a ser implementado:
                                          ---    -   e-
                                                 -   r-
                                                 ------
+
+
+
+   ------------------   -------   -----------
+   Tipo Cripitografia   Payload   Ass Digital
+   ------------------   -------   -----------
