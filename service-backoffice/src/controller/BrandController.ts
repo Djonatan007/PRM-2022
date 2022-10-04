@@ -1,13 +1,13 @@
 import { TypeORMError } from 'typeorm';
 import { Request, Response } from 'express';
-import { Category } from './../entity/Category';
+import { Brand } from '../entity/Brand';
 
-class CategoryController{
+class BrandController{
 
     public async index(request: Request, response: Response){
         try {
-            const categoryes = await Category.find();
-            return response.json(categoryes);
+            const brands = await Brand.find();
+            return response.json(brands);
         } catch (e) {
             const error = e as TypeORMError;
             return response.status(500).json({message: error.message});
@@ -16,8 +16,8 @@ class CategoryController{
 
     public async create(request: Request, response: Response){
         try {
-            const category = await Category.save(request.body);
-            return response.status(201).json(category);
+            const brand = await Brand.save(request.body);
+            return response.status(201).json(brand);
         } catch (e) {
             const error = e as TypeORMError;
             return response.status(500).json({message: error.message});
@@ -31,7 +31,7 @@ class CategoryController{
                 return response.status(400).json({message: "Parâmetro ID não informado"})
             }
 
-            const found = await Category.findOneBy({id: Number(id)});
+            const found = await Brand.findOneBy({id: Number(id)});
 
             if (!found){
                 return response.status(404).json({message: "Recurso não encontrado"})  
@@ -51,15 +51,15 @@ class CategoryController{
                 return response.status(400).json({message: "Parâmetro ID não informado"})
             }
 
-            const found = await Category.findOneBy({id: Number(id)});
+            const found = await Brand.findOneBy({id: Number(id)});
 
             if (!found){
                 return response.status(404).json({message: "Recurso não encontrado"})  
             }
 
-            const category = await Category.update(found.id, request.body);
+            const brand = await Brand.update(found.id, request.body);
 
-            return response.json(category);
+            return response.json(brand);
         } catch (e) {
             const error = e as TypeORMError;
             return response.status(500).json({message: error.message});
@@ -73,7 +73,7 @@ class CategoryController{
                 return response.status(400).json({message: "Parâmetro ID não informado"})
             }
 
-            const found = await Category.findOneBy({id: Number(id)});
+            const found = await Brand.findOneBy({id: Number(id)});
 
             if (!found){
                 return response.status(404).json({message: "Recurso não encontrado"})  
@@ -91,4 +91,4 @@ class CategoryController{
 
 }
 
-export default new CategoryController();
+export default new BrandController();

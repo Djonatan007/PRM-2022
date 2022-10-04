@@ -1,7 +1,8 @@
-import dotenv from "dotenv"
-import { FirebaseError, initializeApp } from "firebase/app";
-import {getAuth, signInWithEmailAndPassword} from "firebase/auth"
+import dotenv from 'dotenv';
+import { initializeApp, FirebaseError } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
+//Carregar variaveis de ambiente
 dotenv.config();
 
 const firebaseConfig = {
@@ -13,10 +14,10 @@ const firebaseConfig = {
   appId: process.env.APPID
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-//autenticação
-
-const signInAdmin = (email: string, password: string) => {signInWithEmailAndPassword(getAuth(), email, password)}
+//Atutenticação
+const signInAdmin = (email: string, password: string) => (signInWithEmailAndPassword(getAuth(), email, password));
 
 export {FirebaseError, signInAdmin}

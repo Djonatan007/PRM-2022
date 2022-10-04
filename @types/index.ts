@@ -3,9 +3,9 @@ export interface ICredential {
     password: string;
 }
 
-export interface IUSer {
+export interface IUser {
     uid?: string;
     name: string;
     email: string;
-    password: string;
+    password?: string;
 }
